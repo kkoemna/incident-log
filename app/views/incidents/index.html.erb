@@ -7,3 +7,11 @@
 <% end %>
 
 <%= link_to 'インシデントを投稿する',new_incident_path %>
+
+<% @incidents.each do |incident| %>
+  <%# <%= incident.image %>
+  <%= incident.title %>
+  <%= incident.content %>
+  <%= incident.date %>
+  <%= incident.place.name%>
+<% end %>

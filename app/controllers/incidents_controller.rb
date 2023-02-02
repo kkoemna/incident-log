@@ -9,7 +9,20 @@ class IncidentsController < ApplicationController
     @incident = Incident.new
   end
 
+  def create
+    @incident = Incident.new(incident_params)
+    if @incident.save
+      redirect_to root_path
+    else
+      render :new
+    end
+  end
+
   private
+
+  def incident_params
+    params.require(:incident).permit(:title, :content, :date, :place_id).merge(user_id: current_user.id)
+  end
 
   def set_incident
     @incident = Incident.find(params[:id])
