@@ -9,9 +9,11 @@
 <%= link_to 'インシデントを投稿する',new_incident_path %>
 
 <% @incidents.each do |incident| %>
-  <%# <%= incident.image %>
-  <%= incident.title %>
-  <%= incident.content %>
-  <%= incident.date %>
-  <%= incident.place.name%>
+  <div>
+    <%= image_tag incident.image.variant(resize: '300x300') if incident.image.attached? %>
+    <%= incident.title %>
+    <%= incident.content %>
+    <%= incident.date %>
+    <%= incident.place.name%>
+  </div>
 <% end %>
