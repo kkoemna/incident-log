@@ -2,6 +2,11 @@ class IncidentsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
 
   def index
+    @incidents = Incident.all.order(created_at: "DESC")
+  end
+
+  def new
+    @incident = Incident.new
   end
 
   private

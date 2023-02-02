@@ -1,0 +1,13 @@
+<div class="contents row">
+  <div class="container">
+    <h3>投稿する</h3>
+    <%= form_with model: @incident, local: true do |f| %>
+      <%= f.file_field :image %>
+      <%= f.text_field :title %>
+      <%= f.text_area :content %>
+      <%= f.text_field :date %>
+      <%# <%= f.collection_select(:place_id, Place.all, :id, :name, {} %> %>
+      <%= f.submit "投稿する" %>
+    <% end %>
+  </div>
+</div>
