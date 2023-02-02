@@ -21,7 +21,7 @@ class IncidentsController < ApplicationController
   private
 
   def incident_params
-    params.require(:incident).permit(:title, :content, :date, :place_id).merge(user_id: current_user.id)
+    params.require(:incident).permit(:image, :title, :content, :date, :place_id).merge(user_id: current_user.id)
   end
 
   def set_incident

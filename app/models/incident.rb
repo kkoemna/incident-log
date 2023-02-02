@@ -3,4 +3,5 @@ class Incident < ApplicationRecord
   validates :place_id, numericality: { other_than: 0 , message: "can't be blank"}
   belongs_to :user
   belongs_to :place
+  has_one_attached :image
 end
