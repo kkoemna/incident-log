@@ -1,10 +1,4 @@
-<% if user_signed_in? %>
-  <%= link_to current_user.name, "/users/#{current_user.id}", class: "user-name" %>
-  <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %>
-<% else %>
-  <%= link_to '新規登録', new_user_registration_path, class: "sign-up" %>
-  <%= link_to 'ログイン', new_user_session_path, class: "login" %>
-<% end %>
+<%= render "shared/header" %>
 
 <%= link_to 'インシデントを投稿する',new_incident_path %>
 
