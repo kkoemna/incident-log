@@ -1,16 +1,18 @@
 <%= render "shared/header" %>
 
-<div class="contents row">
+<div class="form-post">
   <div class="container">
-    <h3>インシデント投稿</h3>
-    <%= form_with model: @incident, local: true do |f| %>
-    <%= render 'shared/error_messages', model: f.object %>
-      <%= f.file_field :image %>
-      <%= f.text_field :title %>
-      <%= f.text_area :content %>
-      <%= f.text_field :date %>
-      <%= f.collection_select(:place_id, Place.all, :id, :name, {}) %>
-      <%= f.submit "投稿する" %>
-    <% end %>
+    <div class="row">
+      <h3>インシデント投稿</h3>
+      <%= form_with model: @incident, local: true do |f| %>
+      <%= render 'shared/error_messages', model: f.object %>
+        <%= f.file_field :image %>
+        <%= f.text_field :title %>
+        <%= f.text_area :content %>
+        <%= f.text_field :date %>
+        <%= f.collection_select(:place_id, Place.all, :id, :name, {}) %>
+        <%= f.submit "投稿する" %>
+      <% end %>
+    </div>
   </div>
 </div>
