@@ -1,19 +1,57 @@
-<% if user_signed_in? %>
-  <%= link_to current_user.name, "/users/#{current_user.id}", class: "user-name" %>
-  <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %>
-<% else %>
-  <%= link_to '新規登録', new_user_registration_path, class: "sign-up" %>
-  <%= link_to 'ログイン', new_user_session_path, class: "login" %>
-<% end %>
+<div class="wallpaper">
 
-<%= link_to 'インシデントを投稿する',new_incident_path %>
+  <%= render "shared/header" %>
 
-<% @incidents.each do |incident| %>
-  <div>
-    <%= image_tag incident.image.variant(resize: '300x300') if incident.image.attached? %>
-    <%= incident.title %>
-    <%= incident.content %>
-    <%= incident.date %>
-    <%= incident.place.name%>
+  <div class="container">
+    <% @incidents.each do |incident| %>
+      <div class="card bg-light my-3" >
+        <div class="row" >
+          <div class="col-lg-6 d-flex justify-content-center">
+            <% if incident.image.attached? %>
+              <%= image_tag incident.image, class:"image" %>
+            <% else %>
+              <%= image_tag "no_image.jpeg" , class:"image" %>
+            <% end %>
+
+            <div class="card-body">
+              <div class="card-text">
+                <small class="text-muted">Title</small><br>
+                <%= incident.title %>
+              </div>
+              <div class="card-text">
+                <small class="text-muted">Content</small><br>
+                <%= incident.content %>
+              </div>
+              <div class="card-text">
+                <small class="text-muted">Date</small><br>
+                <%= incident.date %>
+              </div>
+              <div class="card-text">
+                <small class="text-muted">Place</small><br>
+                <%= incident.place.name %>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 d-flex justify-content-center">
+            <%= image_tag "no_image.jpeg", class:"image" %>
+            <div class="card-body">
+               <div class="card-text">
+                <small class="text-muted">Content</small><br>
+                ---
+              </div>
+              <div class="card-text">
+                <small class="text-muted">Date</small><br>
+                ---
+              </div>
+              <div class="card-text">
+                <small class="text-muted">Cost</small><br>
+                ---
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>
