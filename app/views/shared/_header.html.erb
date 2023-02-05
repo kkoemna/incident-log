@@ -1,10 +1,32 @@
-<header>
-  <%= link_to "Incident Log", "/" %>
-  <% if user_signed_in? %>
-    <%= current_user.name %>
-    <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %>
-  <% else %>
-    <%= link_to '新規登録', new_user_registration_path, class: "sign-up" %>
-    <%= link_to 'ログイン', new_user_session_path, class: "login" %>
-  <% end %>
+<header class="p-3 bg-dark text-white">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+
+      <%= link_to image_tag("il_logo.png", class:"logo"), "/" %>
+
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <li><a href="/" class="nav-link px-2 text-white">Incident Log</a></li>
+        <li><a href="#" class="nav-link px-2 text-secondary">Features</a></li>
+        <li><a href="#" class="nav-link px-2 text-secondary">Pricing</a></li>
+        <li><a href="#" class="nav-link px-2 text-secondary">FAQs</a></li>
+        <li><a href="#" class="nav-link px-2 text-secondary">About</a></li>
+      </ul>
+
+      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+        <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
+      </form>
+
+      <div class="text-end">
+        <% if user_signed_in? %>
+          <div class="btn btn-dark me-2">
+            <%= current_user.name %>
+          </div>
+          <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "btn btn-outline-light me-2" %>
+        <% else %>
+          <%= link_to 'Sign-up', new_user_registration_path, class: "btn btn-outline-warning me-2" %>
+          <%= link_to 'Login', new_user_session_path, class: "btn btn-outline-light me-2" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </header>
