@@ -5,7 +5,7 @@
   <div class="container">
     <% @incidents.each do |incident| %>
       <%= link_to incident_path(incident), class:"text-dark text-decoration-none" do %>
-        <div class="card bg-light my-3" >
+        <div class="card bg-light my-4" >
           <div class="row" >
             <div class="col-lg-6 d-flex justify-content-center">
               <% if incident.image.attached? %>
