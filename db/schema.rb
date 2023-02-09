@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_02_084014) do
+ActiveRecord::Schema.define(version: 2023_02_09_164810) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -44,6 +44,19 @@ ActiveRecord::Schema.define(version: 2023_02_02_084014) do
     t.index ["user_id"], name: "index_incidents_on_user_id"
   end
 
+  create_table "responses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "date", null: false
+    t.integer "cost"
+    t.string "title", null: false
+    t.text "content", null: false
+    t.bigint "user_id", null: false
+    t.bigint "incident_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["incident_id"], name: "index_responses_on_incident_id"
+    t.index ["user_id"], name: "index_responses_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", default: "", null: false
@@ -59,4 +72,6 @@ ActiveRecord::Schema.define(version: 2023_02_02_084014) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "incidents", "users"
+  add_foreign_key "responses", "incidents"
+  add_foreign_key "responses", "users"
 end
