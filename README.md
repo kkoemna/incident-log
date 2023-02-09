@@ -2,10 +2,11 @@
 
 ## users テーブル
 
-| Column             | Type    | Options     |
-| ------------------ | ------- | ----------- |
-| name               | string  | null: false |
-| encrypted_password | string  | null: false |
+| Column             | Type    | Options                   |
+| ------------------ | ------- | ------------------------- |
+| name               | string  | null: false               |
+| email              | string  | null: false, unique: true |
+| encrypted_password | string  | null: false               |
 
 ### Association
 
@@ -17,10 +18,10 @@
 
 | Column   | Type       | Options                        |
 | -------- | ---------- | ------------------------------ |
-| title    | string     | null: false                    |
-| content  | text       | null: false                    |
 | date     | integer    | null: false                    |
 | place_id | integer    | null: false                    |
+| title    | string     | null: false                    |
+| content  | text       | null: false                    |
 | user     | references | null: false, foreign_key: true |
 
 ### Association
@@ -33,9 +34,10 @@
 
 | Column   | Type       | Options                        |
 | -------- | ---------- | ------------------------------ |
-| content  | text       | null: false                    |
 | date     | integer    | null: false                    |
 | cost     | integer    |                                |
+| title    | string     | null: false                    |
+| content  | text       | null: false                    |
 | user     | references | null: false, foreign_key: true |
 | incident | references | null: false, foreign_key: true |
 
