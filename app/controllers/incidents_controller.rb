@@ -1,7 +1,7 @@
 class IncidentsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :move_to_index,      except: [:index, :show]
-  before_action :set_incident,       only:   [:show]
+  before_action :set_incident,       only:   [:show, :edit, :update]
 
   def index
     @incidents = Incident.all.order(created_at: "DESC")
@@ -23,10 +23,21 @@ class IncidentsController < ApplicationController
   def show
   end
 
+  def edit
+  end
+
+  def update
+    if @incident.update(incident_params)
+      redirect_to incident_path
+    else
+      render :edit
+    end
+  end
+
   private
 
   def incident_params
-    params.require(:incident).permit(:image, :title, :content, :date, :place_id).merge(user_id: current_user.id)
+    params.require(:incident).permit(:image, :date, :title, :content, :place_id).merge(user_id: current_user.id)
   end
 
   def set_incident
