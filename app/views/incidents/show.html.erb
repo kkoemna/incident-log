@@ -2,8 +2,8 @@
 
 <div class="container">
   <div class="card bg-light my-4" >
-    <div class="row" >
-      <div class="col-lg-6">
+    <div class="row " >
+      <div class="col">
         <%# インシデント情報 %>
         <div class="card-body">
           <% if @incident.image.attached? %>
@@ -12,7 +12,7 @@
             <%= image_tag "no_image.jpeg" , class:"d-block mx-auto image-show" %>
           <% end %>
         </div>
-        <div class="card-body ms-2">
+        <div class="card-body mx-2">
           <div class="card-text">
             <small class="text-secondary">Title</small><br>
             <%= @incident.title %>
@@ -32,11 +32,11 @@
         </div>
       </div>
       <%# レスポンス情報 %>
-      <div class="col-lg-6">
+      <div class="col">
         <div class="card-body">
           <%= image_tag "no_image.jpeg", class:"d-block mx-auto image-show" %>
         </div>
-        <div class="card-body ms-2">
+        <div class="card-body mx-2">
           <div class="card-text">
             <small class="text-secondary">Content</small><br>
             ---
@@ -53,8 +53,8 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-lg-12">
-        <div class="card-body ms-2">
+      <div class="col">
+        <div class="card-body mx-2">
           <div class="card-text">
             <small class="text-secondary">Comment</small><br>
             投稿日時 ユーザー名:コメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメント<br>
