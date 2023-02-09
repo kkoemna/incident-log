@@ -30,8 +30,10 @@
             <%= @incident.place.name %>
           </div>
           <div class="d-grid gap-2 my-2 d-md-flex justify-content-md-end">
-            <%= link_to '編集', edit_incident_path(@incident), class:"btn btn-secondary", type:"button" %>
-            <%= link_to '削除', "#", class:"btn btn-secondary", type:"button" %>
+            <% if current_user.id == @incident.user_id %>
+              <%= link_to '編集', edit_incident_path(@incident), class:"btn btn-secondary", type:"button" %>
+              <%= link_to '削除', incident_path(@incident), method: :delete, class:"btn btn-secondary", type:"button" %>
+            <% end %>
           </div>
         </div>
       </div>
