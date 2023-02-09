@@ -1,58 +1,67 @@
-<div class="wallpaper">
+<%= render "shared/header" %>
 
-  <%= render "shared/header" %>
-
-  <div class="container">
-    <%= link_to incident_path(@incident), class:"text-dark text-decoration-none" do %>
-      <div class="card bg-light my-4" >
-        <div class="row" >
-          <div class="col-lg-6 d-flex justify-content-center">
-            <% if @incident.image.attached? %>
-              <%= image_tag @incident.image, class:"image-show" %>
-            <% else %>
-              <%= image_tag "no_image.jpeg" , class:"image-show" %>
-            <% end %>
-
-            <div class="card-body">
-              <div class="card-text">
-                <small class="text-secondary">Title</small><br>
-                <%= @incident.title %>
-              </div>
-              <div class="card-text">
-                <small class="text-secondary">Content</small><br>
-                <%= @incident.content %>
-              </div>
-              <div class="card-text">
-                <small class="text-secondary">Date</small><br>
-                <%= @incident.date %>
-              </div>
-              <div class="card-text">
-                <small class="text-secondary">Place</small><br>
-                <%= @incident.place.name %>
-              </div>
-            </div>
+<div class="container">
+  <div class="card bg-light my-4" >
+    <div class="row" >
+      <div class="col-lg-6">
+        <%# インシデント情報 %>
+        <div class="card-body">
+          <% if @incident.image.attached? %>
+            <%= image_tag @incident.image, class:"d-block mx-auto image-show" %>
+          <% else %>
+            <%= image_tag "no_image.jpeg" , class:"d-block mx-auto image-show" %>
+          <% end %>
+        </div>
+        <div class="card-body ms-2">
+          <div class="card-text">
+            <small class="text-secondary">Title</small><br>
+            <%= @incident.title %>
           </div>
-
-          <div class="col-lg-6 d-flex justify-content-center">
-            <%= image_tag "no_image.jpeg", class:"image-show" %>
-            <div class="card-body">
-              <div class="card-text">
-                <small class="text-secondary">Content</small><br>
-                ---
-              </div>
-              <div class="card-text">
-                <small class="text-secondary">Date</small><br>
-                ---
-              </div>
-              <div class="card-text">
-                <small class="text-secondary">Cost</small><br>
-                ---
-              </div>
-            </div>
+          <div class="card-text">
+            <small class="text-secondary">Content</small><br>
+            <%= @incident.content %>
+          </div>
+          <div class="card-text">
+            <small class="text-secondary">Date</small><br>
+            <%= @incident.date %>
+          </div>
+          <div class="card-text">
+            <small class="text-secondary">Place</small><br>
+            <%= @incident.place.name %>
           </div>
         </div>
       </div>
-    <% end %>
+      <%# レスポンス情報 %>
+      <div class="col-lg-6">
+        <div class="card-body">
+          <%= image_tag "no_image.jpeg", class:"d-block mx-auto image-show" %>
+        </div>
+        <div class="card-body ms-2">
+          <div class="card-text">
+            <small class="text-secondary">Content</small><br>
+            ---
+          </div>
+          <div class="card-text">
+            <small class="text-secondary">Date</small><br>
+            ---
+          </div>
+          <div class="card-text">
+            <small class="text-secondary">Cost</small><br>
+            ---
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card-body ms-2">
+          <div class="card-text">
+            <small class="text-secondary">Comment</small><br>
+            投稿日時 ユーザー名:コメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメント<br>
+            投稿日時 ユーザー名:コメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメント
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
 </div>
