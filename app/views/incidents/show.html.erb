@@ -14,6 +14,10 @@
         </div>
         <div class="card-body mx-2">
           <div class="card-text">
+            <small class="text-secondary">Date</small><br>
+            <%= @incident.date %>
+          </div>
+          <div class="card-text">
             <small class="text-secondary">Title</small><br>
             <%= @incident.title %>
           </div>
@@ -22,12 +26,12 @@
             <%= @incident.content %>
           </div>
           <div class="card-text">
-            <small class="text-secondary">Date</small><br>
-            <%= @incident.date %>
-          </div>
-          <div class="card-text">
             <small class="text-secondary">Place</small><br>
             <%= @incident.place.name %>
+          </div>
+          <div class="d-grid gap-2 my-2 d-md-flex justify-content-md-end">
+            <button class="btn btn-secondary" type="button">編集</button>
+            <button class="btn btn-secondary" type="button">削除</button>
           </div>
         </div>
       </div>
@@ -38,16 +42,24 @@
         </div>
         <div class="card-body mx-2">
           <div class="card-text">
-            <small class="text-secondary">Content</small><br>
+            <small class="text-secondary">Date</small><br>
             ---
           </div>
           <div class="card-text">
-            <small class="text-secondary">Date</small><br>
+            <small class="text-secondary">Title</small><br>
+            ---
+          </div>
+          <div class="card-text">
+            <small class="text-secondary">Content</small><br>
             ---
           </div>
           <div class="card-text">
             <small class="text-secondary">Cost</small><br>
             ---
+          </div>
+          <div class="d-grid gap-2 my-2 d-md-flex justify-content-md-end">
+            <button class="btn btn-secondary" type="button">編集</button>
+            <button class="btn btn-secondary" type="button">削除</button>
           </div>
         </div>
       </div>

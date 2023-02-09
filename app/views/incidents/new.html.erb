@@ -11,18 +11,18 @@
       </div>
 
       <div class="my-3">
+        <%= f.label :date %><span class="text-white bg-danger hissu">必須</span><br/>
+        <%= f.text_field :date, autofocus: true, class:"form-control mt-1" %>
+      </div>
+
+      <div class="my-3">
         <%= f.label :title %><span class="text-white bg-danger hissu">必須</span><br/>
-        <%= f.text_field :title, autofocus: true, class:"form-control mt-1" %>
+        <%= f.text_field :title, class:"form-control mt-1" %>
       </div>
 
       <div class="my-3">
         <%= f.label :content %><span class="text-white bg-danger hissu">必須</span><br/>
         <%= f.text_area :content, class:"form-control mt-1" %>
-      </div>
-
-      <div class="my-3">
-        <%= f.label :date %><span class="text-white bg-danger hissu">必須</span><br/>
-        <%= f.text_field :date, class:"form-control mt-1" %>
       </div>
 
       <div class="my-3">
