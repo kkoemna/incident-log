@@ -1,6 +1,7 @@
 class IncidentsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :move_to_index, except: [:index, :show]
+  before_action :move_to_index,      except: [:index, :show]
+  before_action :set_incident,       only:   [:show]
 
   def index
     @incidents = Incident.all.order(created_at: "DESC")
@@ -17,6 +18,9 @@ class IncidentsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
   end
 
   private

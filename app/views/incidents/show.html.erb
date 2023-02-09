@@ -1,0 +1,79 @@
+<%= render "shared/header" %>
+
+<div class="container">
+  <div class="card bg-light my-4" >
+    <div class="row " >
+      <div class="col">
+        <%# インシデント情報 %>
+        <div class="card-body">
+          <% if @incident.image.attached? %>
+            <%= image_tag @incident.image, class:"d-block mx-auto image-show" %>
+          <% else %>
+            <%= image_tag "no_image.jpeg" , class:"d-block mx-auto image-show" %>
+          <% end %>
+        </div>
+        <div class="card-body mx-2">
+          <div class="card-text">
+            <small class="text-secondary">Date</small><br>
+            <%= @incident.date %>
+          </div>
+          <div class="card-text">
+            <small class="text-secondary">Title</small><br>
+            <%= @incident.title %>
+          </div>
+          <div class="card-text">
+            <small class="text-secondary">Content</small><br>
+            <%= @incident.content %>
+          </div>
+          <div class="card-text">
+            <small class="text-secondary">Place</small><br>
+            <%= @incident.place.name %>
+          </div>
+          <div class="d-grid gap-2 my-2 d-md-flex justify-content-md-end">
+            <button class="btn btn-secondary" type="button">編集</button>
+            <button class="btn btn-secondary" type="button">削除</button>
+          </div>
+        </div>
+      </div>
+      <%# レスポンス情報 %>
+      <div class="col">
+        <div class="card-body">
+          <%= image_tag "no_image.jpeg", class:"d-block mx-auto image-show" %>
+        </div>
+        <div class="card-body mx-2">
+          <div class="card-text">
+            <small class="text-secondary">Date</small><br>
+            ---
+          </div>
+          <div class="card-text">
+            <small class="text-secondary">Title</small><br>
+            ---
+          </div>
+          <div class="card-text">
+            <small class="text-secondary">Content</small><br>
+            ---
+          </div>
+          <div class="card-text">
+            <small class="text-secondary">Cost</small><br>
+            ---
+          </div>
+          <div class="d-grid gap-2 my-2 d-md-flex justify-content-md-end">
+            <button class="btn btn-secondary" type="button">編集</button>
+            <button class="btn btn-secondary" type="button">削除</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="card-body mx-2">
+          <div class="card-text">
+            <small class="text-secondary">Comment</small><br>
+            投稿日時 ユーザー名:コメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメント<br>
+            投稿日時 ユーザー名:コメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメント
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
