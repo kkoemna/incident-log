@@ -3,8 +3,8 @@
 <div class="container">
   <div class="row col-lg-5 mx-auto">
     <h2 class="mt-5 text-center form-title">Post a new response</h2>
-    <%= form_with model: @response, local: true do |f| %>
-    <%= render 'shared/error_messages', model: f.object %>
+    <%= form_with model: [@incident, @response], local: true do |f| %>
+
       <div class="my-3">
         <%= f.label :image %><br />
         <%= f.file_field :image, class:"form-control my-3" %>

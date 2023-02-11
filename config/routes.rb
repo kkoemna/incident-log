@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'incidents#index'
-  resources :incidents
-  resources :responses
+  resources :incidents do
+    resources :responses
+  end
 end
