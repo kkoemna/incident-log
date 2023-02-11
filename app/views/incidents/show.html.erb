@@ -4,6 +4,7 @@
   <div class="card bg-light my-4" >
     <div class="row " >
       <div class="col">
+
         <%# インシデント情報 %>
         <div class="card-body">
           <% if @incident.image.attached? %>
@@ -37,6 +38,8 @@
           </div>
         </div>
       </div>
+      <%# /インシデント情報 %>
+
       <%# レスポンス情報 %>
       <% if @incident.response.nil? %>
         <%# レスポンス未投稿の場合 %>
@@ -66,6 +69,7 @@
             </div>
           </div>
         </div>
+        <%# /レスポンス未投稿の場合 %>
       <% else %>
         <%# レスポンス投稿済みの場合 %>
         <div class="col">
@@ -101,8 +105,13 @@
             </div>
           </div>
         </div>
+        <%# /レスポンス投稿済みの場合 %>
       <% end %>
+      <%# /レスポンス情報 %>
+
     </div>
+
+    <%# コメント情報 %>
     <div class="row">
       <div class="col">
         <div class="card-body mx-2">
@@ -114,5 +123,7 @@
         </div>
       </div>
     </div>
+    <%# /コメント情報 %>
+
   </div>
 </div>
