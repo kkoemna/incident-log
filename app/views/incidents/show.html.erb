@@ -60,8 +60,7 @@
             ---
           </div>
           <div class="d-grid gap-2 my-2 d-md-flex justify-content-md-end">
-            <button class="btn btn-secondary" type="button">編集</button>
-            <button class="btn btn-secondary" type="button">削除</button>
+            <%= link_to '投稿', new_incident_response_path(@incident, @response), class:"btn btn-secondary", type:"button" %>
           </div>
         </div>
       </div>
