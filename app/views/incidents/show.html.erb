@@ -4,6 +4,7 @@
   <div class="card bg-light my-4" >
     <div class="row " >
       <div class="col">
+
         <%# インシデント情報 %>
         <div class="card-body">
           <% if @incident.image.attached? %>
@@ -37,34 +38,80 @@
           </div>
         </div>
       </div>
+      <%# /インシデント情報 %>
+
       <%# レスポンス情報 %>
-      <div class="col">
-        <div class="card-body">
-          <%= image_tag "no_image.jpeg", class:"d-block mx-auto image-show" %>
+      <% if @incident.response.nil? %>
+        <%# レスポンス未投稿の場合 %>
+        <div class="col">
+          <div class="card-body">
+            <%= image_tag "unsolved.png" , class:"d-block mx-auto image-show" %>
+          </div>
+          <div class="card-body mx-2">
+            <div class="card-text">
+              <small class="text-secondary">Date</small><br>
+              ---
+            </div>
+            <div class="card-text">
+              <small class="text-secondary">Title</small><br>
+              ---
+            </div>
+            <div class="card-text">
+              <small class="text-secondary">Content</small><br>
+              ---
+            </div>
+            <div class="card-text">
+              <small class="text-secondary">Cost</small><br>
+              ---
+            </div>
+            <div class="d-grid gap-2 my-2 d-md-flex justify-content-md-end">
+              <%= link_to '投稿', new_incident_response_path(@incident, @response), class:"btn btn-secondary", type:"button" %>
+            </div>
+          </div>
         </div>
-        <div class="card-body mx-2">
-          <div class="card-text">
-            <small class="text-secondary">Date</small><br>
-            ---
+        <%# /レスポンス未投稿の場合 %>
+      <% else %>
+        <%# レスポンス投稿済みの場合 %>
+        <div class="col">
+          <div class="card-body">
+            <% if @incident.image.attached? %>
+              <%= image_tag @incident.response.image, class:"d-block mx-auto image-show" %>
+            <% else %>
+              <%= image_tag "no_image.jpeg" , class:"d-block mx-auto image-show" %>
+            <% end %>
           </div>
-          <div class="card-text">
-            <small class="text-secondary">Title</small><br>
-            ---
-          </div>
-          <div class="card-text">
-            <small class="text-secondary">Content</small><br>
-            ---
-          </div>
-          <div class="card-text">
-            <small class="text-secondary">Cost</small><br>
-            ---
-          </div>
-          <div class="d-grid gap-2 my-2 d-md-flex justify-content-md-end">
-            <%= link_to '投稿', new_incident_response_path(@incident, @response), class:"btn btn-secondary", type:"button" %>
+          <div class="card-body mx-2">
+            <div class="card-text">
+              <small class="text-secondary">Date</small><br>
+              <%= @incident.response.date %>
+            </div>
+            <div class="card-text">
+              <small class="text-secondary">Title</small><br>
+              <%= @incident.response.title %>
+            </div>
+            <div class="card-text">
+              <small class="text-secondary">Content</small><br>
+              <%= @incident.response.content %>
+            </div>
+            <div class="card-text">
+              <small class="text-secondary">Cost</small><br>
+              <%= @incident.response.cost %>円
+            </div>
+            <div class="d-grid gap-2 my-2 d-md-flex justify-content-md-end">
+              <% if current_user.id == @incident.response.user_id %>
+                <%= link_to '編集', "#", class:"btn btn-secondary", type:"button" %>
+                <%= link_to '削除', "#", method: :delete, class:"btn btn-secondary", type:"button" %>
+              <% end %>
+            </div>
           </div>
         </div>
-      </div>
+        <%# /レスポンス投稿済みの場合 %>
+      <% end %>
+      <%# /レスポンス情報 %>
+
     </div>
+
+    <%# コメント情報 %>
     <div class="row">
       <div class="col">
         <div class="card-body mx-2">
@@ -76,5 +123,7 @@
         </div>
       </div>
     </div>
+    <%# /コメント情報 %>
+
   </div>
 </div>

@@ -5,6 +5,7 @@
     <%= link_to incident_path(incident), class:"text-dark text-decoration-none" do %>
       <div class="card bg-light my-3" >
         <div class="row" >
+
           <%# インシデント情報 %>
           <div class="col d-flex">
             <div class="col">
@@ -33,30 +34,69 @@
               </div>
             </div>
           </div>
+          <%# /インシデント情報 %>
+
           <%# レスポンス情報 %>
-          <div class="col d-flex">
-            <div class="col">
-              <div class="card-body">
-                <%= image_tag "no_image.jpeg", class:"d-block mx-auto image-index" %>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card-body">
-                <div class="card-text">
-                  <small class="text-secondary">Date</small><br>
-                  ---
-                </div>
-                <div class="card-text">
-                  <small class="text-secondary">Title</small><br>
-                  ---
-                </div>
-                <div class="card-text">
-                  <small class="text-secondary">Cost</small><br>
-                  ---
+          <% if incident.response.nil? %>
+            <%# レスポンス未投稿の場合 %>
+            <div class="col d-flex">
+              <div class="col">
+                <div class="card-body">
+                  <%= image_tag "unsolved.png", class:"d-block mx-auto image-index" %>
                 </div>
               </div>
+              <div class="col">
+                <div class="card-body">
+                  <div class="card-text">
+                    <small class="text-secondary">Date</small><br>
+                    ---
+                  </div>
+                  <div class="card-text">
+                    <small class="text-secondary">Title</small><br>
+                    ---
+                  </div>
+                  <div class="card-text">
+                    <small class="text-secondary">Cost</small><br>
+                    ---
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
+            <%# /レスポンス未投稿の場合 %>
+          <% else %>
+            <%# レスポンス投稿済みの場合 %>
+            <div class="col d-flex">
+              <div class="col">
+                <div class="card-body">
+                  <% if incident.response.image.attached? %>
+                    <%= image_tag incident.response.image, class:"d-block mx-auto image-index" %>
+                  <% else %>
+                    <%= image_tag "no_image.jpeg" , class:"d-block mx-auto image-index" %>
+                  <% end %>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card-body">
+                  <div class="card-text">
+                    <small class="text-secondary">Date</small><br>
+                    <%= incident.response.date %>
+                  </div>
+                  <div class="card-text">
+                    <small class="text-secondary">Title</small><br>
+                    <%= incident.response.title %>
+                  </div>
+                  <div class="card-text">
+                    <small class="text-secondary">Cost</small><br>
+                    <%= incident.response.cost %>円
+                  </div>
+                </div>
+              </div>
+            </div>
+            <%# /レスポンス投稿済みの場合 %>
+
+          <% end %>
+          <%# /レスポンス情報 %>
+
         </div>
       </div>
     <% end %>
