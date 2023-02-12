@@ -1,6 +1,6 @@
 class ResponsesController < ApplicationController
-  before_action :set_incident,  only: [:new, :create, :edit]
-  before_action :move_to_index, only: [:edit]
+  before_action :set_incident,  only: [:new, :create, :edit, :update]
+  before_action :move_to_index, only: [:edit, :update]
 
   def new
     @response = Response.new
@@ -15,6 +15,13 @@ class ResponsesController < ApplicationController
 
   def edit
     @response = Response.find(params[:id])
+  end
+
+  def update
+    @response = Response.find(params[:id])
+    if @response.update(response_params)
+      redirect_to incident_path(@incident)
+    end
   end
 
   private
