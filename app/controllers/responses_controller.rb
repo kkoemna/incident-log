@@ -1,5 +1,5 @@
 class ResponsesController < ApplicationController
-  before_action :set_incident,  only: [:new, :create]
+  before_action :set_incident,  only: [:new, :create, :edit]
   before_action :move_to_index, only: [:edit]
 
   def new
@@ -14,6 +14,7 @@ class ResponsesController < ApplicationController
   end
 
   def edit
+    @response = Response.find(params[:id])
   end
 
   private
@@ -27,7 +28,7 @@ class ResponsesController < ApplicationController
   end
 
   def move_to_index
-    @incident = Incident.find(params[:incident_id])
+    set_incident
     unless @incident.response.user_id == current_user.id
       redirect_to root_path
     end

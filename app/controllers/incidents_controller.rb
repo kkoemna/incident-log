@@ -21,6 +21,7 @@ class IncidentsController < ApplicationController
   end
 
   def show
+    @response = Response.new
   end
 
   def edit
