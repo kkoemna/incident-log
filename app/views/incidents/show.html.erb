@@ -30,6 +30,10 @@
             <small class="text-secondary">Place</small><br>
             <%= @incident.place.name %>
           </div>
+          <div class="card-text">
+            <small class="text-secondary">Contributor</small><br>
+            <%= @incident.user.name %>
+          </div>
           <div class="d-grid gap-2 my-2 d-md-flex justify-content-md-end">
             <% if current_user.id == @incident.user_id %>
               <%= link_to '編集', edit_incident_path(@incident), class:"btn btn-secondary", type:"button" %>
@@ -62,6 +66,10 @@
             </div>
             <div class="card-text">
               <small class="text-secondary">Cost</small><br>
+              ---
+            </div>
+            <div class="card-text">
+              <small class="text-secondary">Contributor</small><br>
               ---
             </div>
             <div class="d-grid gap-2 my-2 d-md-flex justify-content-md-end">
@@ -97,10 +105,14 @@
               <small class="text-secondary">Cost</small><br>
               <%= @incident.response.cost %>円
             </div>
+            <div class="card-text">
+              <small class="text-secondary">Contributor</small><br>
+              <%= @incident.response.user.name %>
+            </div>
             <div class="d-grid gap-2 my-2 d-md-flex justify-content-md-end">
               <% if current_user.id == @incident.response.user_id %>
                 <%= link_to '編集', edit_incident_response_path(@incident, @incident.response), class:"btn btn-secondary", type:"button" %>
-                <%= link_to '削除', "#", method: :delete, class:"btn btn-secondary", type:"button" %>
+                <%= link_to '削除', incident_response_path(@incident, @incident.response), method: :delete, class:"btn btn-secondary", type:"button" %>
               <% end %>
             </div>
           </div>
