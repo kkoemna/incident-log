@@ -1,6 +1,7 @@
 class ResponsesController < ApplicationController
-  before_action :set_incident,  only: [:new, :create, :edit, :update]
-  before_action :move_to_index, only: [:edit, :update]
+  before_action :set_incident,  only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_response,  only: [:edit, :update, :destroy]
+  before_action :move_to_index, only: [:edit, :update, :destroy]
 
   def new
     @response = Response.new
@@ -14,14 +15,17 @@ class ResponsesController < ApplicationController
   end
 
   def edit
-    @response = Response.find(params[:id])
   end
 
   def update
-    @response = Response.find(params[:id])
     if @response.update(response_params)
       redirect_to incident_path(@incident)
     end
+  end
+
+  def destroy
+    @response.destroy
+    redirect_to incident_path(@incident)
   end
 
   private
@@ -34,9 +38,12 @@ class ResponsesController < ApplicationController
     @incident = Incident.find(params[:incident_id])
   end
 
+  def set_response
+    @response = Response.find(params[:id])
+  end
+
   def move_to_index
-    set_incident
-    unless @incident.response.user_id == current_user.id
+    unless @response.user_id == current_user.id
       redirect_to root_path
     end
   end
