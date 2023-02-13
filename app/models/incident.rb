@@ -8,4 +8,5 @@ class Incident < ApplicationRecord
   belongs_to :place
   has_one_attached :image
   has_one :response, dependent: :destroy
+  has_many :comments, dependent: :destroy
 end
