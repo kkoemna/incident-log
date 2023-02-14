@@ -18,10 +18,10 @@
 
 | Column   | Type       | Options                        |
 | -------- | ---------- | ------------------------------ |
-| date     | integer    | null: false                    |
-| place_id | integer    | null: false                    |
+| date     | string     | null: false                    |
 | title    | string     | null: false                    |
 | content  | text       | null: false                    |
+| place_id | integer    | null: false                    |
 | user     | references | null: false, foreign_key: true |
 
 ### Association
@@ -34,10 +34,10 @@
 
 | Column   | Type       | Options                        |
 | -------- | ---------- | ------------------------------ |
-| date     | integer    | null: false                    |
-| cost     | integer    |                                |
+| date     | string     | null: false                    |
 | title    | string     | null: false                    |
 | content  | text       | null: false                    |
+| cost     | string     | null: false                    |
 | user     | references | null: false, foreign_key: true |
 | incident | references | null: false, foreign_key: true |
 
