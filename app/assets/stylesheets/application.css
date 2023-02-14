@@ -6,6 +6,12 @@ body {
   background-attachment: fixed;
 }
 
+header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
 .logo{
   width: 25px;
   height: 25px;

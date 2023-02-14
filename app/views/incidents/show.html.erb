@@ -60,7 +60,7 @@
         <div class="col">
           <div class="card-body">
             <span>Response</span>
-            <% if @incident.image.attached? %>
+            <% if @incident.response.image.attached? %>
               <%= image_tag @incident.response.image, class:"d-block mx-auto image-show" %>
             <% else %>
               <%= image_tag "no_image.jpeg" , class:"d-block mx-auto image-show" %>
