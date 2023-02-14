@@ -1,6 +1,7 @@
 body {
   font-family: 'M PLUS Rounded 1c', sans-serif!important;
-  background-image: url("bgi.jpeg");
+  background-image: url('bgi.jpg');
+  background-size: cover;
   background-position: center top;
   background-attachment: fixed;
 }
@@ -21,7 +22,7 @@ body {
 }
 
 .form-title{
-  text-shadow: 3px 2px 1px gray;
+  text-shadow: 2px 2px 2px gray;
 }
 
 .indispensable{
