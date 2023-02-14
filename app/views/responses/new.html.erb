@@ -2,32 +2,33 @@
 
 <div class="container">
   <div class="row col-lg-5 mx-auto">
-    <h2 class="mt-5 text-center form-title">Post a new response</h2>
+    <h2 class="mt-5 text-center form-title">レスポンス投稿</h2>
     <%= form_with model: [@incident, @response], local: true do |f| %>
+    <%= render 'shared/error_messages', model: f.object %>
 
       <div class="my-3">
-        <%= f.label :image %><br/>
+        <%= f.label :日付 %><span class="bg-danger indispensable">必須</span><br/>
+        <%= f.text_field :date, autofocus: true, class:"form-control mt-1", placeholder:"例）2023.01.01" %>
+      </div>
+
+      <div class="my-3">
+        <%= f.label :表題 %><span class="bg-danger indispensable">必須</span><br/>
+        <%= f.text_field :title, class:"form-control mt-1", placeholder:"例）パッキンを交換しました" %>
+      </div>
+
+      <div class="my-3">
+        <%= f.label :内容 %><span class="bg-danger indispensable">必須</span><br/>
+        <%= f.text_area :content, class:"form-control mt-1", placeholder:"例）水漏れの原因はパッキンの劣化だったので、新しいものを購入して取り替えました。使用した工具はモンキーレンチのみです。" %>
+      </div>
+
+      <div class="my-3">
+        <%= f.label :費用 %><span class="bg-danger indispensable">必須</span><br/>
+        <%= f.text_field :cost, class:"form-control mt-1", placeholder:"例）300円" %>
+      </div>
+
+      <div class="my-3">
+        <%= f.label :画像 %><br/>
         <%= f.file_field :image, class:"form-control mt-1" %>
-      </div>
-
-      <div class="my-3">
-        <%= f.label :date %><span class="text-white bg-danger hissu">必須</span><br/>
-        <%= f.text_field :date, autofocus: true, class:"form-control mt-1" %>
-      </div>
-
-      <div class="my-3">
-        <%= f.label :cost %><br/>
-        <%= f.text_field :cost, class:"form-control mt-1" %>
-      </div>
-
-      <div class="my-3">
-        <%= f.label :title %><span class="text-white bg-danger hissu">必須</span><br/>
-        <%= f.text_field :title, class:"form-control mt-1" %>
-      </div>
-
-      <div class="my-3">
-        <%= f.label :content %><span class="text-white bg-danger hissu">必須</span><br/>
-        <%= f.text_area :content, class:"form-control mt-1" %>
       </div>
 
       <button class="w-100 btn btn-lg btn-primary mt-4" type="submit">投稿する</button>
