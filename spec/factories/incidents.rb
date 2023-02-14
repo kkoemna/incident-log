@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :incident do
+    date {'2023.01.01'}
     title { Faker::Lorem.sentence }
     content { Faker::Lorem.sentence }
-    date { Faker::Number.between(from: 20000101, to: 20991231) }
     place_id { Faker::Number.between(from: 1, to: 24) }
     association :user
 

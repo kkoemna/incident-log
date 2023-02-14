@@ -16,6 +16,11 @@ RSpec.describe Incident, type: :model do
     end
 
     context '投稿がうまくいかないとき' do
+      it '日付が空だと登録できない' do
+        @incident.date = ''
+        @incident.valid?
+        expect(@incident.errors.full_messages).to include("Date can't be blank")
+      end
       it 'タイトルが空だと登録できない' do
         @incident.title = ''
         @incident.valid?
@@ -26,15 +31,15 @@ RSpec.describe Incident, type: :model do
         @incident.valid?
         expect(@incident.errors.full_messages).to include("Content can't be blank")
       end
-      it '日付が空だと登録できない' do
-        @incident.date = ''
-        @incident.valid?
-        expect(@incident.errors.full_messages).to include("Date can't be blank")
-      end
       it '場所が未選択だと登録できない' do
         @incident.place_id = 0
         @incident.valid?
         expect(@incident.errors.full_messages).to include("Place can't be blank")
+      end
+      it 'ユーザーが紐づいていないと登録できない' do
+        @incident.user = nil
+        @incident.valid?
+        expect(@incident.errors.full_messages).to include("User must exist")
       end
     end
   end
