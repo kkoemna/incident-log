@@ -1,35 +1,35 @@
 <%= render "shared/header" %>
 
 <div class="container">
-  <div class="row col-lg-5 mx-auto">
-    <h2 class="mt-5 text-center form-title">Please sign up</h2>
+  <div class="row col-lg-6 mx-auto">
+    <h1 class="mt-5 text-center form-title">ユーザー新規登録</h1>
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
       <div class="my-3">
-        <%= f.label :name %><br/>
-        <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"form-control mt-1" %>
+        <%= f.label :名前 %><span class="bg-danger indispensable">必須</span><br/>
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"form-control mt-1", placeholder:"例）支配人" %>
       </div>
 
       <div class="my-3">
-        <%= f.label :email %><br/>
-        <%= f.email_field :email, autocomplete: "email", class:"form-control mt-1" %>
+        <%= f.label :メールアドレス %><span class="bg-danger indispensable">必須</span><br/>
+        <%= f.email_field :email, autocomplete: "email", class:"form-control mt-1", placeholder:"例）incident@hotel.com" %>
       </div>
 
       <div class="my-3">
-        <%= f.label :password %>
+        <%= f.label :パスワード %>
         <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %><br/>
-        <%= f.password_field :password, autocomplete: "new-password", class:"form-control mt-1" %>
+        <span>（<%= @minimum_password_length %>文字以上）</span>
+        <% end %><span class="bg-danger indispensable">必須</span><br/>
+        <%= f.password_field :password, autocomplete: "new-password", class:"form-control mt-1", placeholder:"パスワードを入力してください" %>
       </div>
 
       <div class="my-3">
-        <%= f.label :password_confirmation %><br/>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control mt-1" %>
+        <%= f.label :パスワード（確認） %><span class="bg-danger indispensable">必須</span><br/>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control mt-1", placeholder:"パスワードを再度入力してください" %>
       </div>
 
-      <button class="w-100 btn btn-lg btn-primary mt-4" type="submit">Sign up</button>
+      <button class="w-100 btn btn-lg btn-primary mt-4" type="submit">登録する</button>
     <% end %>
   </div>
 </div>
