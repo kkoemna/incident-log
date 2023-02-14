@@ -44,9 +44,9 @@ ActiveRecord::Schema.define(version: 2023_02_13_085816) do
   end
 
   create_table "incidents", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "date", null: false
     t.string "title", null: false
     t.text "content", null: false
-    t.integer "date", null: false
     t.integer "place_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -55,10 +55,10 @@ ActiveRecord::Schema.define(version: 2023_02_13_085816) do
   end
 
   create_table "responses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "date", null: false
-    t.integer "cost"
+    t.string "date", null: false
     t.string "title", null: false
     t.text "content", null: false
+    t.string "cost", null: false
     t.bigint "user_id", null: false
     t.bigint "incident_id", null: false
     t.datetime "created_at", precision: 6, null: false
