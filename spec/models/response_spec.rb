@@ -41,7 +41,7 @@ RSpec.describe Response, type: :model do
         @response.valid?
         expect(@response.errors.full_messages).to include("User must exist")
       end
-      it 'ユーザーが紐づいていないと登録できない' do
+      it 'インシデントが紐づいていないと登録できない' do
         @response.incident = nil
         @response.valid?
         expect(@response.errors.full_messages).to include("Incident must exist")
