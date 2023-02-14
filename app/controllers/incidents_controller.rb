@@ -22,6 +22,8 @@ class IncidentsController < ApplicationController
 
   def show
     @response = Response.new
+    @comment = Comment.new
+    @comments = @incident.comments
   end
 
   def edit

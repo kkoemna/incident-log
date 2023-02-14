@@ -34,10 +34,10 @@
             <small class="text-secondary">Contributor</small><br>
             <%= @incident.user.name %>
           </div>
-          <div class="d-grid gap-2 my-2 d-md-flex justify-content-md-end">
+          <div class="d-flex my-2">
             <% if current_user.id == @incident.user_id %>
-              <%= link_to '編集', edit_incident_path(@incident), class:"btn btn-secondary", type:"button" %>
-              <%= link_to '削除', incident_path(@incident), method: :delete, class:"btn btn-secondary", type:"button" %>
+              <%= link_to 'インシデントを編集する', edit_incident_path(@incident), class:"btn btn-primary flex-fill mx-2", type:"button" %>
+              <%= link_to 'インシデントを削除する', incident_path(@incident), method: :delete, class:"btn btn-primary flex-fill mx-2", type:"button" %>
             <% end %>
           </div>
         </div>
@@ -72,8 +72,8 @@
               <small class="text-secondary">Contributor</small><br>
               ---
             </div>
-            <div class="d-grid gap-2 my-2 d-md-flex justify-content-md-end">
-              <%= link_to '投稿', new_incident_response_path(@incident, @response), class:"btn btn-secondary", type:"button" %>
+            <div class="d-grid my-2">
+              <%= link_to 'レスポンスを投稿する', new_incident_response_path(@incident, @response), class:"btn btn-primary", type:"button" %>
             </div>
           </div>
         </div>
@@ -109,10 +109,10 @@
               <small class="text-secondary">Contributor</small><br>
               <%= @incident.response.user.name %>
             </div>
-            <div class="d-grid gap-2 my-2 d-md-flex justify-content-md-end">
+            <div class="d-flex my-2">
               <% if current_user.id == @incident.response.user_id %>
-                <%= link_to '編集', edit_incident_response_path(@incident, @incident.response), class:"btn btn-secondary", type:"button" %>
-                <%= link_to '削除', incident_response_path(@incident, @incident.response), method: :delete, class:"btn btn-secondary", type:"button" %>
+                <%= link_to 'レスポンスを編集する', edit_incident_response_path(@incident, @incident.response), class:"btn btn-primary flex-fill mx-2", type:"button" %>
+                <%= link_to 'レスポンスを削除する', incident_response_path(@incident, @incident.response), method: :delete, class:"btn btn-primary flex-fill mx-2", type:"button" %>
               <% end %>
             </div>
           </div>
@@ -128,9 +128,27 @@
       <div class="col">
         <div class="card-body mx-2">
           <div class="card-text">
-            <small class="text-secondary">Comment</small><br>
-            投稿日時 ユーザー名:コメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメント<br>
-            投稿日時 ユーザー名:コメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメント
+
+            <% if user_signed_in? %>
+              <%= form_with model: [@incident, @comment], local: true do |f| %>
+                <div>
+                  <small class="text-secondary">Comment</small><br>
+                  <%= f.text_field :content, class:"form-control mt-1" %>
+                </div>
+                <div class="d-grid gap-2 my-2 d-md-flex">
+                  <%= f.submit 'コメントを投稿する', class:"btn btn-primary", type:"button" %>
+                </div>
+              <% end %>
+            <% end %>
+            <ul>
+              <% @comments.each do |comment| %>
+                <li>
+                  <%= comment.content %>
+                  <%= comment.user.name %>
+                </li>
+              <% end %>
+            </ul>
+
           </div>
         </div>
       </div>
