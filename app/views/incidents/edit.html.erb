@@ -1,33 +1,34 @@
 <%= render "shared/header" %>
 
 <div class="container">
-  <div class="row col-lg-5 mx-auto">
-    <h2 class="mt-5 text-center form-title">Edit the incident</h2>
+  <div class="row col-lg-6 mx-auto">
+    <h1 class="mt-5 text-center form-title">インシデント編集</h1>
     <%= form_with model: @incident, local: true do |f| %>
     <%= render 'shared/error_messages', model: f.object %>
+
       <div class="my-3">
-        <%= f.label :image %><br />
-        <%= f.file_field :image, class:"form-control my-3" %>
+        <%= f.label :日付 %><span class="bg-danger indispensable">必須</span><br/>
+        <%= f.text_field :date, autofocus: true, class:"form-control mt-1", placeholder:"例）2023.01.01" %>
       </div>
 
       <div class="my-3">
-        <%= f.label :date %><span class="text-white bg-danger hissu">必須</span><br/>
-        <%= f.text_field :date, autofocus: true, class:"form-control mt-1" %>
+        <%= f.label :表題 %><span class="bg-danger indispensable">必須</span><br/>
+        <%= f.text_field :title, class:"form-control mt-1", placeholder:"例）蛇口から水漏れしています" %>
       </div>
 
       <div class="my-3">
-        <%= f.label :title %><span class="text-white bg-danger hissu">必須</span><br/>
-        <%= f.text_field :title, class:"form-control mt-1" %>
+        <%= f.label :内容 %><span class="bg-danger indispensable">必須</span><br/>
+        <%= f.text_area :content, class:"form-control mt-1", placeholder:"例）洗面台の蛇口からポタポタと水が漏れています。蛇口ハンドルを強く締めましたが止まりませんでした。" %>
       </div>
 
       <div class="my-3">
-        <%= f.label :content %><span class="text-white bg-danger hissu">必須</span><br/>
-        <%= f.text_area :content, class:"form-control mt-1" %>
-      </div>
-
-      <div class="my-3">
-        <%= f.label :place %><span class="text-white bg-danger hissu">必須</span><br/>
+        <%= f.label :場所 %><span class="bg-danger indispensable">必須</span><br/>
         <%= f.collection_select(:place_id, Place.all, :id, :name, {}, class:"form-select mt-1") %>
+      </div>
+
+      <div class="my-3">
+        <%= f.label :画像 %><br/>
+        <%= f.file_field :image, class:"form-control mt-1" %>
       </div>
 
       <button class="w-100 btn btn-lg btn-primary mt-4" type="submit">変更する</button>
