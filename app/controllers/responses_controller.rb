@@ -1,4 +1,5 @@
 class ResponsesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_incident,  only: [:new, :create, :edit, :update, :destroy]
   before_action :set_response,  only: [:edit, :update, :destroy]
   before_action :move_to_index, only: [:edit, :update, :destroy]
