@@ -1,32 +1,32 @@
 <%= render "shared/header" %>
 
 <div class="container">
-  <div class="row col-lg-5 mx-auto">
-    <h2 class="mt-5 text-center form-title">Post a new incident</h2>
+  <div class="row col-lg-6 mx-auto">
+    <h2 class="mt-5 text-center form-title">インシデント投稿</h2>
     <%= form_with model: @incident, local: true do |f| %>
     <%= render 'shared/error_messages', model: f.object %>
       <div class="my-3">
-        <%= f.label :image %><br />
-        <%= f.file_field :image, class:"form-control my-3" %>
+        <%= f.label :画像 %><br/>
+        <%= f.file_field :image, class:"form-control mt-1" %>
       </div>
 
       <div class="my-3">
-        <%= f.label :date %><span class="text-white bg-danger hissu">必須</span><br/>
+        <%= f.label :日時 %><span class="text-white bg-danger indispensable">必須</span><br/>
         <%= f.text_field :date, autofocus: true, class:"form-control mt-1" %>
       </div>
 
       <div class="my-3">
-        <%= f.label :title %><span class="text-white bg-danger hissu">必須</span><br/>
+        <%= f.label :タイトル %><span class="text-white bg-danger indispensable">必須</span><br/>
         <%= f.text_field :title, class:"form-control mt-1" %>
       </div>
 
       <div class="my-3">
-        <%= f.label :content %><span class="text-white bg-danger hissu">必須</span><br/>
+        <%= f.label :内容 %><span class="text-white bg-danger indispensable">必須</span><br/>
         <%= f.text_area :content, class:"form-control mt-1" %>
       </div>
 
       <div class="my-3">
-        <%= f.label :place %><span class="text-white bg-danger hissu">必須</span><br/>
+        <%= f.label :場所 %><span class="text-white bg-danger indispensable">必須</span><br/>
         <%= f.collection_select(:place_id, Place.all, :id, :name, {}, class:"form-select mt-1") %>
       </div>
 

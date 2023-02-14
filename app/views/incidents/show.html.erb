@@ -7,6 +7,7 @@
 
         <%# インシデント情報 %>
         <div class="card-body">
+          <span>Incident</span>
           <% if @incident.image.attached? %>
             <%= image_tag @incident.image, class:"d-block mx-auto image-show" %>
           <% else %>
@@ -34,12 +35,7 @@
             <small class="text-secondary">Contributor</small><br>
             <%= @incident.user.name %>
           </div>
-          <div class="d-flex my-2">
-            <% if current_user.id == @incident.user_id %>
-              <%= link_to 'インシデントを編集する', edit_incident_path(@incident), class:"btn btn-primary flex-fill mx-2", type:"button" %>
-              <%= link_to 'インシデントを削除する', incident_path(@incident), method: :delete, class:"btn btn-primary flex-fill mx-2", type:"button" %>
-            <% end %>
-          </div>
+
         </div>
       </div>
       <%# /インシデント情報 %>
@@ -49,6 +45,7 @@
         <%# レスポンス未投稿の場合 %>
         <div class="col">
           <div class="card-body">
+            <span>Response</span>
             <%= image_tag "unsolved.png" , class:"d-block mx-auto image-show" %>
           </div>
           <div class="card-body mx-2">
@@ -72,9 +69,7 @@
               <small class="text-secondary">Contributor</small><br>
               ---
             </div>
-            <div class="d-grid my-2">
-              <%= link_to 'レスポンスを投稿する', new_incident_response_path(@incident, @response), class:"btn btn-primary", type:"button" %>
-            </div>
+
           </div>
         </div>
         <%# /レスポンス未投稿の場合 %>
@@ -82,6 +77,7 @@
         <%# レスポンス投稿済みの場合 %>
         <div class="col">
           <div class="card-body">
+            <span>Response</span>
             <% if @incident.image.attached? %>
               <%= image_tag @incident.response.image, class:"d-block mx-auto image-show" %>
             <% else %>
@@ -109,12 +105,7 @@
               <small class="text-secondary">Contributor</small><br>
               <%= @incident.response.user.name %>
             </div>
-            <div class="d-flex my-2">
-              <% if current_user.id == @incident.response.user_id %>
-                <%= link_to 'レスポンスを編集する', edit_incident_response_path(@incident, @incident.response), class:"btn btn-primary flex-fill mx-2", type:"button" %>
-                <%= link_to 'レスポンスを削除する', incident_response_path(@incident, @incident.response), method: :delete, class:"btn btn-primary flex-fill mx-2", type:"button" %>
-              <% end %>
-            </div>
+
           </div>
         </div>
         <%# /レスポンス投稿済みの場合 %>
@@ -123,6 +114,30 @@
 
     </div>
 
+    <div class="row">
+      <div class="col">
+        <div class="d-flex my-2">
+          <% if current_user.id == @incident.user_id %>
+            <%= link_to 'インシデントを編集する', edit_incident_path(@incident), class:"btn btn-primary flex-fill mx-2", type:"button" %>
+            <%= link_to 'インシデントを削除する', incident_path(@incident), method: :delete, class:"btn btn-primary flex-fill mx-2", type:"button" %>
+          <% end %>
+        </div>
+      </div>
+      <div class="col">
+        <% if @incident.response.nil? %>
+          <div class="d-grid my-2">
+            <%= link_to 'レスポンスを投稿する', new_incident_response_path(@incident, @response), class:"btn btn-primary mx-2", type:"button" %>
+          </div>
+        <% else %>
+          <div class="d-flex my-2">
+            <% if current_user.id == @incident.response.user_id %>
+              <%= link_to 'レスポンスを編集する', edit_incident_response_path(@incident, @incident.response), class:"btn btn-primary flex-fill mx-2", type:"button" %>
+              <%= link_to 'レスポンスを削除する', incident_response_path(@incident, @incident.response), method: :delete, class:"btn btn-primary flex-fill mx-2", type:"button" %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
     <%# コメント情報 %>
     <div class="row">
       <div class="col">

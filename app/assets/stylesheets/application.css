@@ -1,3 +1,10 @@
+body {
+  font-family: 'M PLUS Rounded 1c', sans-serif!important;
+  background-image: url("bgi.jpeg");
+  background-position: center top;
+  background-attachment: fixed;
+}
+
 .logo{
   width: 25px;
   height: 25px;
@@ -13,19 +20,12 @@
   height: 420px;
 }
 
-body{
-  background-image: url("bgi.jpeg");
-  background-position: center top;
-
-  background-attachment: fixed;
+.form-title{
+  text-shadow: 3px 2px 1px gray;
 }
 
-.hissu{
+.indispensable{
   font-size: 5px;
   padding: 1px;
   margin-left: 7px;
-}
-
-.form-title{
-  text-shadow: 3px 2px 1px gray;
 }
