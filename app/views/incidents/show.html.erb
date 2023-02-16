@@ -6,8 +6,8 @@
       <div class="col">
 
         <%# インシデント情報 %>
-        <div class="card-body text-center">
-          <small>Incident</small>
+        <div class="card-body">
+          <small class="text-danger">Incident</small>
           <% if @incident.image.attached? %>
             <%= image_tag @incident.image, class:"d-block mx-auto mt-2 image-show" %>
           <% else %>
@@ -16,23 +16,23 @@
         </div>
         <div class="card-body mx-2">
           <div class="card-text">
-            <small class="t">日付</small><br>
+            <small class="text-secondary">日付</small><br>
             <%= @incident.date %>
           </div>
           <div class="card-text">
-            <small class="t">タイトル</small><br>
+            <small class="text-secondary">タイトル</small><br>
             <%= @incident.title %>
           </div>
           <div class="card-text">
-            <small class="t">内容</small><br>
+            <small class="text-secondary">内容</small><br>
             <%= @incident.content %>
           </div>
           <div class="card-text">
-            <small class="t">場所</small><br>
+            <small class="text-secondary">場所</small><br>
             <%= @incident.place.name %>
           </div>
           <div class="card-text">
-            <small class="t">投稿者</small><br>
+            <small class="text-secondary">投稿者</small><br>
             <%= @incident.user.name %>
           </div>
         </div>
@@ -43,14 +43,14 @@
       <% if @incident.response.nil? %>
         <%# レスポンス未投稿の場合 %>
         <div class="col">
-          <div class="card-body text-center">
-            <small>Response</small>
+          <div class="card-body">
+            <small class="text-secondary">Response</small>
             <%= image_tag "unsolved.png" , class:"d-block mx-auto mt-2 image-show" %>
           </div>
           <div class="card-body mx-2">
             <div class="card-text">
-              <h4>未解決のインシデントです</h4>
-              <span>解決後レスポンスを投稿してください</span>
+              <h3>未対応のインシデントです</h3>
+              <div>対応後レスポンスを投稿してください</div>
             </div>
           </div>
         </div>
@@ -58,8 +58,8 @@
       <% else %>
         <%# レスポンス投稿済みの場合 %>
         <div class="col">
-          <div class="card-body text-center">
-            <small>Response</small>
+          <div class="card-body">
+            <small class="text-primary">Response</small>
             <% if @incident.response.image.attached? %>
               <%= image_tag @incident.response.image, class:"d-block mx-auto mt-2 image-show" %>
             <% else %>
@@ -68,23 +68,23 @@
           </div>
           <div class="card-body mx-2">
             <div class="card-text">
-              <small class="t">日付</small><br>
+              <small class="text-secondary">日付</small><br>
               <%= @incident.response.date %>
             </div>
             <div class="card-text">
-              <small class="t">タイトル</small><br>
+              <small class="text-secondary">タイトル</small><br>
               <%= @incident.response.title %>
             </div>
             <div class="card-text">
-              <small class="t">内容</small><br>
+              <small class="text-secondary">内容</small><br>
               <%= @incident.response.content %>
             </div>
             <div class="card-text">
-              <small class="t">費用</small><br>
+              <small class="text-secondary">費用</small><br>
               <%= @incident.response.cost %>
             </div>
             <div class="card-text">
-              <small class="t">投稿者</small><br>
+              <small class="text-secondary">投稿者</small><br>
               <%= @incident.response.user.name %>
             </div>
           </div>
@@ -132,7 +132,7 @@
 
             <% if user_signed_in? %>
               <%= form_with model: [@incident, @comment], local: true do |f| %>
-                <small class="t">コメント</small><br>
+                <small class="text-secondary">コメント</small><br>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                   <%= f.text_field :content, class:"form-control mt-1 " %>
                   <%= f.submit 'コメントを投稿する', class:"btn btn-primary", type:"button" %>
