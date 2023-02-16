@@ -134,16 +134,19 @@
               <%= form_with model: [@incident, @comment], local: true do |f| %>
                 <small class="text-secondary">コメント</small><br>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                  <%= f.text_field :content, class:"form-control mt-1 " %>
-                  <%= f.submit 'コメントを投稿する', class:"btn btn-primary", type:"button" %>
+                  <%= f.text_field :content, class:"form-control mt-1" %>
+                  <%= f.submit 'コメントを投稿する', class:"btn btn-primary" %>
                 </div>
               <% end %>
             <% end %>
-            <ul>
+            <ul class="mt-3">
               <% @comments.each do |comment| %>
-                <li>
+                <li class="my-1">
                   <%= comment.content %>
-                  <%= comment.user.name %>
+                  <small class="text-secondary">
+                    <%= comment.user.name %>
+                    <%= '(' + comment.created_at.to_s(:datetime_jp) + ')' %>
+                  </small>
                 </li>
               <% end %>
             </ul>
