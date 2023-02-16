@@ -3,7 +3,7 @@
 <div class="container">
   <div class="row col-lg-6 mx-auto">
     <h1 class="mt-5 text-center form-title">インシデント編集</h1>
-    <%= form_with model: @incident, local: true do |f| %>
+    <%= form_with model: @incident, id: 'new_post', local: true do |f| %>
     <%= render 'shared/error_messages', model: f.object %>
 
       <div class="my-3">
@@ -28,7 +28,8 @@
 
       <div class="my-3">
         <%= f.label :画像 %><br/>
-        <%= f.file_field :image, class:"form-control mt-1" %>
+        <%= f.file_field :image, class:"form-control mt-1 mb-3" %>
+        <div id="previews" class="text-center"></div>
       </div>
 
       <button class="w-100 btn btn-lg btn-primary mt-4" type="submit">変更する</button>

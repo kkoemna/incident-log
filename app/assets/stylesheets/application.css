@@ -12,26 +12,26 @@ header {
   z-index: 999;
 }
 
-.logo{
+.logo-img {
   width: 25px;
   height: 25px;
 }
 
-.image-index{
+.image-index {
   width: 240px;
   height: 240px;
 }
 
-.image-show{
+.image-show {
   width: 420px;
   height: 420px;
 }
 
-.form-title{
+.form-title {
   text-shadow: 2px 2px 2px gray;
 }
 
-.indispensable{
+.indispensable {
   font-size: 10px;
   color: white;
   padding: 2px;

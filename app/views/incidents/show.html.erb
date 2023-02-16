@@ -6,12 +6,12 @@
       <div class="col">
 
         <%# インシデント情報 %>
-        <div class="card-body">
-          <span>Incident</span>
+        <div class="card-body text-center">
+          <small>Incident</small>
           <% if @incident.image.attached? %>
-            <%= image_tag @incident.image, class:"d-block mx-auto image-show" %>
+            <%= image_tag @incident.image, class:"d-block mx-auto mt-2 image-show" %>
           <% else %>
-            <%= image_tag "no_image.jpeg" , class:"d-block mx-auto image-show" %>
+            <%= image_tag "no_image.jpeg" , class:"d-block mx-auto mt-2image-show" %>
           <% end %>
         </div>
         <div class="card-body mx-2">
@@ -43,9 +43,9 @@
       <% if @incident.response.nil? %>
         <%# レスポンス未投稿の場合 %>
         <div class="col">
-          <div class="card-body">
-            <span>Response</span>
-            <%= image_tag "unsolved.png" , class:"d-block mx-auto image-show" %>
+          <div class="card-body text-center">
+            <small>Response</small>
+            <%= image_tag "unsolved.png" , class:"d-block mx-auto mt-2 image-show" %>
           </div>
           <div class="card-body mx-2">
             <div class="card-text">
@@ -58,12 +58,12 @@
       <% else %>
         <%# レスポンス投稿済みの場合 %>
         <div class="col">
-          <div class="card-body">
-            <span>Response</span>
+          <div class="card-body text-center">
+            <small>Response</small>
             <% if @incident.response.image.attached? %>
-              <%= image_tag @incident.response.image, class:"d-block mx-auto image-show" %>
+              <%= image_tag @incident.response.image, class:"d-block mx-auto mt-2 image-show" %>
             <% else %>
-              <%= image_tag "no_image.jpeg" , class:"d-block mx-auto image-show" %>
+              <%= image_tag "no_image.jpeg" , class:"d-block mx-auto mt-2 image-show" %>
             <% end %>
           </div>
           <div class="card-body mx-2">
