@@ -2,7 +2,7 @@
 
 <div class="container">
   <div class="card bg-light my-4" >
-    <div class="row " >
+    <div class="row" >
       <div class="col">
 
         <%# インシデント情報 %>
@@ -16,23 +16,23 @@
         </div>
         <div class="card-body mx-2">
           <div class="card-text">
-            <small class="text-secondary">日付</small><br>
+            <small class="t">日付</small><br>
             <%= @incident.date %>
           </div>
           <div class="card-text">
-            <small class="text-secondary">タイトル</small><br>
+            <small class="t">タイトル</small><br>
             <%= @incident.title %>
           </div>
           <div class="card-text">
-            <small class="text-secondary">内容</small><br>
+            <small class="t">内容</small><br>
             <%= @incident.content %>
           </div>
           <div class="card-text">
-            <small class="text-secondary">場所</small><br>
+            <small class="t">場所</small><br>
             <%= @incident.place.name %>
           </div>
           <div class="card-text">
-            <small class="text-secondary">投稿者</small><br>
+            <small class="t">投稿者</small><br>
             <%= @incident.user.name %>
           </div>
         </div>
@@ -68,23 +68,23 @@
           </div>
           <div class="card-body mx-2">
             <div class="card-text">
-              <small class="text-secondary">日付</small><br>
+              <small class="t">日付</small><br>
               <%= @incident.response.date %>
             </div>
             <div class="card-text">
-              <small class="text-secondary">タイトル</small><br>
+              <small class="t">タイトル</small><br>
               <%= @incident.response.title %>
             </div>
             <div class="card-text">
-              <small class="text-secondary">内容</small><br>
+              <small class="t">内容</small><br>
               <%= @incident.response.content %>
             </div>
             <div class="card-text">
-              <small class="text-secondary">費用</small><br>
+              <small class="t">費用</small><br>
               <%= @incident.response.cost %>
             </div>
             <div class="card-text">
-              <small class="text-secondary">投稿者</small><br>
+              <small class="t">投稿者</small><br>
               <%= @incident.response.user.name %>
             </div>
           </div>
@@ -98,24 +98,24 @@
     <%# 各ボタン %>
     <% if user_signed_in? %>
       <div class="row">
-        <div class="col">
-          <div class="d-flex my-2">
+        <div class="col-md my-1">
+          <div class="d-grid gap-2">
             <% if current_user.id == @incident.user_id %>
-              <%= link_to 'インシデントを編集する', edit_incident_path(@incident), class:"btn btn-primary flex-fill mx-2", type:"button" %>
-              <%= link_to 'インシデントを削除する', incident_path(@incident), method: :delete, class:"btn btn-primary flex-fill mx-2", type:"button" %>
+              <%= link_to 'インシデントを編集する', edit_incident_path(@incident), class:"btn btn-primary mx-4", type:"button" %>
+              <%= link_to 'インシデントを削除する', incident_path(@incident), method: :delete, class:"btn btn-secondary mx-4", type:"button" %>
             <% end %>
           </div>
         </div>
-        <div class="col">
+        <div class="col-md my-1">
           <% if @incident.response.nil? %>
-            <div class="d-grid my-2">
-              <%= link_to 'レスポンスを投稿する', new_incident_response_path(@incident, @response), class:"btn btn-primary mx-2", type:"button" %>
+            <div class="d-grid gap-2">
+              <%= link_to 'レスポンスを投稿する', new_incident_response_path(@incident, @response), class:"btn btn-primary mx-4", type:"button" %>
             </div>
           <% else %>
-            <div class="d-flex my-2">
+            <div class="d-grid gap-2">
               <% if current_user.id == @incident.response.user_id %>
-                <%= link_to 'レスポンスを編集する', edit_incident_response_path(@incident, @incident.response), class:"btn btn-primary flex-fill mx-2", type:"button" %>
-                <%= link_to 'レスポンスを削除する', incident_response_path(@incident, @incident.response), method: :delete, class:"btn btn-primary flex-fill mx-2", type:"button" %>
+                <%= link_to 'レスポンスを編集する', edit_incident_response_path(@incident, @incident.response), class:"btn btn-primary mx-4", type:"button" %>
+                <%= link_to 'レスポンスを削除する', incident_response_path(@incident, @incident.response), method: :delete, class:"btn btn-secondary mx-4", type:"button" %>
               <% end %>
             </div>
           <% end %>
@@ -132,11 +132,9 @@
 
             <% if user_signed_in? %>
               <%= form_with model: [@incident, @comment], local: true do |f| %>
-                <div>
-                  <small class="text-secondary">コメント</small><br>
-                  <%= f.text_field :content, class:"form-control mt-1" %>
-                </div>
-                <div class="d-grid gap-2 my-2 d-md-flex">
+                <small class="t">コメント</small><br>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                  <%= f.text_field :content, class:"form-control mt-1 " %>
                   <%= f.submit 'コメントを投稿する', class:"btn btn-primary", type:"button" %>
                 </div>
               <% end %>

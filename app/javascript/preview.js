@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function(){
-  const postForm = document.getElementById('new_post');
+  const postForm = document.getElementById('post_edit');
   const previewList = document.getElementById('previews');
   if (!postForm) return null;
 

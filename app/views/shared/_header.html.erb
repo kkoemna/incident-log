@@ -24,7 +24,7 @@
           </div>
           <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "btn btn-outline-light me-2" %>
         <% else %>
-          <%= link_to '新規登録', new_user_registration_path, class: "btn btn-outline-warning me-2" %>
+          <%= link_to '新規登録', new_user_registration_path, class: "btn btn-light me-2" %>
           <%= link_to 'ログイン', new_user_session_path, class: "btn btn-outline-light me-2" %>
         <% end %>
       </div>
