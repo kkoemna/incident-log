@@ -38,3 +38,11 @@ header {
   margin-left: 8px;
   border-radius: 2px;
 }
+
+.post-btn {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  border-radius: 15px;
+  text-decoration: none;
+}

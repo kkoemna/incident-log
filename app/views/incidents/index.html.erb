@@ -105,4 +105,13 @@
       </div>
     <% end %>
   <% end %>
+
+  <%# インシデント投稿ボタン %>
+  <%= link_to new_incident_path, class:"post-btn bg-dark text-white text-center p-3" do %>
+    <small>インシデントを</small><br>
+    <%= image_tag 'plus.png', size: '50x50'%><br>
+    <small>投稿する</small>
+  <% end %>
+  <%# /インシデント投稿ボタン %>
+
 </div>
