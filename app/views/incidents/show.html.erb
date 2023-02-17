@@ -102,7 +102,7 @@
           <div class="d-grid gap-2">
             <% if current_user.id == @incident.user_id %>
               <%= link_to 'インシデントを編集する', edit_incident_path(@incident), class:"btn btn-primary mx-4", type:"button" %>
-              <%= link_to 'インシデントを削除する', incident_path(@incident), method: :delete, class:"btn btn-secondary mx-4", type:"button" %>
+              <%= link_to 'インシデントを削除する', incident_path(@incident), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"btn btn-secondary mx-4", type:"button" %>
             <% end %>
           </div>
         </div>
@@ -115,7 +115,7 @@
             <div class="d-grid gap-2">
               <% if current_user.id == @incident.response.user_id %>
                 <%= link_to 'レスポンスを編集する', edit_incident_response_path(@incident, @incident.response), class:"btn btn-primary mx-4", type:"button" %>
-                <%= link_to 'レスポンスを削除する', incident_response_path(@incident, @incident.response), method: :delete, class:"btn btn-secondary mx-4", type:"button" %>
+                <%= link_to 'レスポンスを削除する', incident_response_path(@incident, @incident.response), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"btn btn-secondary mx-4", type:"button" %>
               <% end %>
             </div>
           <% end %>
@@ -157,5 +157,14 @@
     </div>
     <%# /コメント情報 %>
 
+    <div class="row">
+      <div class="col">
+        <div class="card-body mx-2 mb-5">
+          <div class="card-text d-grid gap-2 d-md-flex justify-content-md-center">
+            <%= link_to '一覧画面に戻る', root_path, class:"btn btn-outline-secondary" %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
