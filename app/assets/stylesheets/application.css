@@ -39,10 +39,9 @@ header {
   border-radius: 2px;
 }
 
-.post-btn {
+.post-incident-btn {
   position: fixed;
   bottom: 40px;
   right: 40px;
-  border-radius: 15px;
-  text-decoration: none;
+  box-shadow: 5px 10px 10px gray;
 }
