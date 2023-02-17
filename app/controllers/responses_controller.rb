@@ -12,6 +12,8 @@ class ResponsesController < ApplicationController
     @response = Response.new(response_params)
     if @response.save
       redirect_to incident_path(@incident)
+    else
+      render :new
     end
   end
 
@@ -21,6 +23,8 @@ class ResponsesController < ApplicationController
   def update
     if @response.update(response_params)
       redirect_to incident_path(@incident)
+    else
+      render :edit
     end
   end
 

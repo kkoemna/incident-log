@@ -4,9 +4,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to incident_path(@comment.incident)
     else
-      @incident = @comment.incident
-      @comments = @incident.comments
-      render "incidents/show"
+      redirect_to incident_path(@comment.incident)
     end
   end
 
