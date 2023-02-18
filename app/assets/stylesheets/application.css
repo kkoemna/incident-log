@@ -13,8 +13,10 @@ header {
 }
 
 .logo-img {
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
+  margin-top: 5px;
+  margin-left: 10px;
 }
 
 .image-index {
