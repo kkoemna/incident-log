@@ -12,7 +12,7 @@ class Incident < ApplicationRecord
 
   def self.search(search)
     if search != ""
-      Incident.where('content LIKE(?)', "%#{search}%")
+      Incident.where('date LIKE(?) OR title LIKE(?) OR content LIKE(?)', "%#{search}%", "%#{search}%", "%#{search}%")
     else
       Incident.all
     end
