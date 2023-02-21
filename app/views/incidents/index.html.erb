@@ -1,5 +1,16 @@
+<%# ヘッダーの呼び出し %>
 <%= render "shared/header" %>
+<%# /ヘッダーの呼び出し %>
 
+
+<%# 検索フォームの呼び出し %>
+<div class="container">
+  <%= render "shared/search_form" %>
+</div>
+<%# /検索フォームの呼び出し %>
+
+
+<%# インシデント一覧表示 %>
 <div class="container">
   <% @incidents.each do |incident| %>
     <%= link_to incident_path(incident), class:"text-dark text-decoration-none" do %>
@@ -105,13 +116,14 @@
       </div>
     <% end %>
   <% end %>
-
-  <%# インシデント投稿ボタン %>
-  <%= link_to new_incident_path, class:" btn btn-primary post-incident-btn px-2 py-3" do %>
-    <small>インシデントを</small><br>
-    <%= image_tag 'plus.png', size:'35x35' %><br>
-    <small>投稿する</small>
-  <% end %>
-  <%# /インシデント投稿ボタン %>
-
 </div>
+<%# /インシデント一覧表示 %>
+
+
+<%# インシデント投稿ボタン %>
+<%= link_to new_incident_path, class:" btn btn-primary post-incident-btn px-2 py-3" do %>
+  <small>インシデントを</small><br>
+  <%= image_tag 'plus.png', size:'35x35' %><br>
+  <small>投稿する</small>
+<% end %>
+<%# /インシデント投稿ボタン %>
