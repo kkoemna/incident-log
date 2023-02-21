@@ -1,5 +1,9 @@
+<%# ヘッダーの呼び出し %>
 <%= render "shared/header" %>
+<%# /ヘッダーの呼び出し %>
 
+
+<%# インシデント詳細表示 %>
 <div class="container">
   <div class="card bg-light my-4" >
     <div class="row" >
@@ -95,7 +99,7 @@
 
     </div>
 
-    <%# 各ボタン %>
+    <%# 各種ボタン %>
     <% if user_signed_in? %>
       <div class="row">
         <div class="col-md my-1">
@@ -122,14 +126,13 @@
         </div>
       </div>
     <% end %>
-    <%# /各ボタン %>
+    <%# /各種ボタン %>
 
     <%# コメント情報 %>
     <div class="row">
       <div class="col">
         <div class="card-body mx-2">
           <div class="card-text">
-
             <% if user_signed_in? %>
               <%= form_with model: [@incident, @comment], local: true do |f| %>
                 <small class="text-secondary">コメント</small><br>
@@ -150,13 +153,13 @@
                 </li>
               <% end %>
             </ul>
-
           </div>
         </div>
       </div>
     </div>
     <%# /コメント情報 %>
 
+    <%# 戻るボタン %>
     <div class="row">
       <div class="col">
         <div class="card-body mx-2 mb-5">
@@ -166,5 +169,8 @@
         </div>
       </div>
     </div>
+    <%# /戻るボタン %>
+
   </div>
 </div>
+<%# /インシデント詳細表示 %>
