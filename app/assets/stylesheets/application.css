@@ -12,6 +12,10 @@ header {
   z-index: 999;
 }
 
+li {
+  list-style: none;
+  margin-bottom: 5px;
+}
 .logo-img {
   width: 30px;
   height: 30px;
@@ -20,8 +24,8 @@ header {
 }
 
 .image-index {
-  width: 240px;
-  height: 240px;
+  width: 260px;
+  height: 260px;
 }
 
 .image-show {
