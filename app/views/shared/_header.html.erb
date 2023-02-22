@@ -1,20 +1,17 @@
-<header class="p-3 bg-dark text-white">
+<header class="p-3 bg-dark text-white mb-4">
   <div class="container">
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
 
-      <%= link_to image_tag("il_logo.png", class:"logo-img"), "/" %>
-
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-        <li><%= link_to 'Incident Log', root_path, class:"nav-link px-2 text-white" %></li>
+        <li class="d-flex">
+          <%= link_to image_tag("il_logo.png", class:"logo-img"), "/" %>
+          <%= link_to 'Incident Log', root_path, class:"nav-link px-2 text-white" %>
+        </li>
         <li><a href="#" class="nav-link px-2 text-secondary">Features</a></li>
         <li><a href="#" class="nav-link px-2 text-secondary">Pricing</a></li>
         <li><a href="#" class="nav-link px-2 text-secondary">FAQs</a></li>
         <li><a href="#" class="nav-link px-2 text-secondary">About</a></li>
       </ul>
-
-      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-        <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
-      </form>
 
       <div class="text-end">
         <% if user_signed_in? %>

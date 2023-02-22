@@ -1,11 +1,15 @@
+<%# ヘッダーの呼び出し %>
 <%= render "shared/header" %>
+<%# /ヘッダーの呼び出し %>
 
+
+<%# インシデント詳細表示 %>
 <div class="container">
   <div class="card bg-light my-4" >
     <div class="row" >
-      <div class="col">
 
-        <%# インシデント情報 %>
+      <%# インシデント情報 %>
+      <div class="col">
         <div class="card-body">
           <small class="text-danger">Incident</small>
           <% if @incident.image.attached? %>
@@ -14,28 +18,28 @@
             <%= image_tag "no_image.jpeg" , class:"d-block mx-auto mt-2 image-show" %>
           <% end %>
         </div>
-        <div class="card-body mx-2">
-          <div class="card-text">
+        <ul class="card-body mx-2">
+          <li class="card-text">
             <small class="text-secondary">日付</small><br>
             <%= @incident.date %>
-          </div>
-          <div class="card-text">
+          </li>
+          <li class="card-text">
             <small class="text-secondary">タイトル</small><br>
             <%= @incident.title %>
-          </div>
-          <div class="card-text">
+          </li>
+          <li class="card-text">
             <small class="text-secondary">内容</small><br>
             <%= @incident.content %>
-          </div>
-          <div class="card-text">
+          </li>
+          <li class="card-text">
             <small class="text-secondary">場所</small><br>
             <%= @incident.place.name %>
-          </div>
-          <div class="card-text">
+          </li>
+          <li class="card-text">
             <small class="text-secondary">投稿者</small><br>
             <%= @incident.user.name %>
-          </div>
-        </div>
+          </li>
+        </ul>
       </div>
       <%# /インシデント情報 %>
 
@@ -44,13 +48,13 @@
         <%# レスポンス未投稿の場合 %>
         <div class="col">
           <div class="card-body">
-            <small class="text-secondary">Response</small>
+            <small class="text-danger">Response</small>
             <%= image_tag "unsolved.png" , class:"d-block mx-auto mt-2 image-show" %>
           </div>
           <div class="card-body mx-2">
             <div class="card-text">
               <h3>未対応のインシデントです</h3>
-              <div>対応後レスポンスを投稿してください</div>
+              <div class="my-3">対応後レスポンスを投稿してください</div>
             </div>
           </div>
         </div>
@@ -66,28 +70,28 @@
               <%= image_tag "no_image.jpeg" , class:"d-block mx-auto mt-2 image-show" %>
             <% end %>
           </div>
-          <div class="card-body mx-2">
-            <div class="card-text">
+          <ul class="card-body mx-2">
+            <li class="card-text">
               <small class="text-secondary">日付</small><br>
               <%= @incident.response.date %>
-            </div>
-            <div class="card-text">
+            </li>
+            <li class="card-text">
               <small class="text-secondary">タイトル</small><br>
               <%= @incident.response.title %>
-            </div>
-            <div class="card-text">
+            </li>
+            <li class="card-text">
               <small class="text-secondary">内容</small><br>
               <%= @incident.response.content %>
-            </div>
-            <div class="card-text">
+            </li>
+            <li class="card-text">
               <small class="text-secondary">費用</small><br>
               <%= @incident.response.cost %>
-            </div>
-            <div class="card-text">
+            </li>
+            <li class="card-text">
               <small class="text-secondary">投稿者</small><br>
               <%= @incident.response.user.name %>
-            </div>
-          </div>
+            </li>
+          </ul>
         </div>
         <%# /レスポンス投稿済みの場合 %>
       <% end %>
@@ -95,7 +99,7 @@
 
     </div>
 
-    <%# 各ボタン %>
+    <%# 各種ボタン %>
     <% if user_signed_in? %>
       <div class="row">
         <div class="col-md my-1">
@@ -122,14 +126,13 @@
         </div>
       </div>
     <% end %>
-    <%# /各ボタン %>
+    <%# /各種ボタン %>
 
     <%# コメント情報 %>
     <div class="row">
       <div class="col">
         <div class="card-body mx-2">
           <div class="card-text">
-
             <% if user_signed_in? %>
               <%= form_with model: [@incident, @comment], local: true do |f| %>
                 <small class="text-secondary">コメント</small><br>
@@ -141,7 +144,7 @@
             <% end %>
             <ul class="mt-3">
               <% @comments.each do |comment| %>
-                <li class="my-1">
+                <li>
                   <%= comment.content %>
                   <small class="text-secondary">
                     <%= comment.user.name %>
@@ -150,13 +153,13 @@
                 </li>
               <% end %>
             </ul>
-
           </div>
         </div>
       </div>
     </div>
     <%# /コメント情報 %>
 
+    <%# 戻るボタン %>
     <div class="row">
       <div class="col">
         <div class="card-body mx-2 mb-5">
@@ -166,5 +169,8 @@
         </div>
       </div>
     </div>
+    <%# /戻るボタン %>
+
   </div>
 </div>
+<%# /インシデント詳細表示 %>

@@ -1,0 +1,127 @@
+<%# ヘッダーの呼び出し %>
+<%= render "shared/header" %>
+<%# /ヘッダーの呼び出し %>
+
+
+<%# 検索フォームの呼び出し %>
+<%= render "shared/search_form" %>
+<%# /検索フォームの呼び出し %>
+
+
+<%# インシデント一覧表示 %>
+<div class="container">
+  <% @incidents.each do |incident| %>
+    <%= link_to incident_path(incident), class:"text-dark text-decoration-none" do %>
+      <div class="card bg-light my-3 card-shadow" >
+        <div class="row" >
+
+          <%# インシデント情報 %>
+          <div class="col d-flex">
+            <div class="col">
+              <div class="card-body">
+                <% if incident.image.attached? %>
+                  <%= image_tag incident.image, class:"d-block mx-auto image-index" %>
+                <% else %>
+                  <%= image_tag "no_image.jpeg" , class:"d-block mx-auto image-index" %>
+                <% end %>
+              </div>
+            </div>
+            <div class="col">
+              <ul class="card-body">
+                <small class="text-danger">Incident</small>
+                <li class="card-text mt-1">
+                  <small class="text-secondary">日付</small><br>
+                  <%= incident.date %>
+                </li>
+                <li class="card-text">
+                  <small class="text-secondary">タイトル</small><br>
+                  <%= incident.title %>
+                </li>
+                <li class="card-text">
+                  <small class="text-secondary">場所</small><br>
+                  <%= incident.place.name %>
+                </li>
+                <li class="card-text">
+                  <small class="text-secondary">投稿者</small><br>
+                  <%= incident.user.name %>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <%# /インシデント情報 %>
+
+          <%# レスポンス情報 %>
+          <% if incident.response.nil? %>
+            <%# レスポンス未投稿の場合 %>
+            <div class="col d-flex">
+              <div class="col">
+                <div class="card-body">
+                  <%= image_tag "unsolved.png", class:"d-block mx-auto image-index" %>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card-body">
+                  <small class="text-danger">Response</small>
+                  <div class="card-text mt-2">
+                    <h3>未対応</h3>
+                  </div>
+                  <div class="card-text">
+                    <div>レスポンスを投稿してください</div>  
+                  </div>
+                </div>
+              </div>
+            </div>
+            <%# /レスポンス未投稿の場合 %>
+          <% else %>
+            <%# レスポンス投稿済みの場合 %>
+            <div class="col d-flex">
+              <div class="col">
+                <div class="card-body">
+                  <% if incident.response.image.attached? %>
+                    <%= image_tag incident.response.image, class:"d-block mx-auto image-index" %>
+                  <% else %>
+                    <%= image_tag "no_image.jpeg" , class:"d-block mx-auto image-index" %>
+                  <% end %>
+                </div>
+              </div>
+              <div class="col">
+                <ul class="card-body">
+                  <small class="text-primary">Response</small>
+                  <li class="card-text mt-1">
+                    <small class="text-secondary">日付</small><br>
+                    <%= incident.response.date %>
+                  </li>
+                  <li class="card-text">
+                    <small class="text-secondary">タイトル</small><br>
+                    <%= incident.response.title %>
+                  </li>
+                  <li class="card-text">
+                    <small class="text-secondary">費用</small><br>
+                    <%= incident.response.cost %>
+                  </li>
+                  <li class="card-text">
+                    <small class="text-secondary">投稿者</small><br>
+                    <%= incident.response.user.name %>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <%# /レスポンス投稿済みの場合 %>
+          <% end %>
+          <%# /レスポンス情報 %>
+
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+<%# /インシデント一覧表示 %>
+
+
+<%# インシデント投稿ボタン %>
+<%= link_to new_incident_path, class:" btn btn-primary post-incident-btn px-2 py-3" do %>
+  <span>インシデントを</span><br>
+  <%= image_tag 'plus.png', size:'50x50' %><br>
+  <span>投稿する</span>
+<% end %>
+<%# /インシデント投稿ボタン %>

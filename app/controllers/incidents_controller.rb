@@ -1,5 +1,5 @@
 class IncidentsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :search]
   before_action :set_incident,       only:   [:show, :edit, :update, :destroy]
   before_action :move_to_index,      only:   [:edit, :update, :destroy]
 
@@ -40,6 +40,10 @@ class IncidentsController < ApplicationController
   def destroy
     @incident.destroy
     redirect_to root_path
+  end
+
+  def search
+    @incidents = Incident.search(params[:keyword]).order(created_at: "DESC")
   end
 
   private

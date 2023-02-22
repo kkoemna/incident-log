@@ -12,14 +12,20 @@ header {
   z-index: 999;
 }
 
+li {
+  list-style: none;
+  margin-bottom: 5px;
+}
 .logo-img {
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
+  margin-top: 5px;
+  margin-left: 10px;
 }
 
 .image-index {
-  width: 240px;
-  height: 240px;
+  width: 260px;
+  height: 260px;
 }
 
 .image-show {
@@ -43,5 +49,5 @@ header {
   position: fixed;
   bottom: 40px;
   right: 40px;
-  box-shadow: 5px 10px 10px gray;
+  box-shadow: 5px 5px 5px gray;
 }
