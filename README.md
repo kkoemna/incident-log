@@ -80,15 +80,15 @@ https://docs.google.com/spreadsheets/d/1rabXuI0YQNptYdlvjKqLm-W6KLKZiC7SpHgJurc5
 
 # 実装した機能についての説明
 
-1. 一覧ページ（トップページ） → インシデント投稿ページ
+## 一覧ページ（トップページ） → インシデント投稿ページ
 
-[![Image from Gyazo](https://i.gyazo.com/b5c0b146d2acf7482ed4a1649c79c652.gif)](https://gyazo.com/b5c0b146d2acf7482ed4a1649c79c652)
+![Image from Gyazo](https://i.gyazo.com/b5c0b146d2acf7482ed4a1649c79c652.gif)
 
 <br>
 
-2. 一覧ページ（トップページ） → 検索結果ページ → インシデント詳細ページ
+## 一覧ページ（トップページ） → 検索結果ページ → インシデント詳細ページ
 
-[![Image from Gyazo](https://i.gyazo.com/03907bba60bb7284a782a85f2fdcdc87.gif)](https://gyazo.com/03907bba60bb7284a782a85f2fdcdc87)
+![Image from Gyazo](https://i.gyazo.com/03907bba60bb7284a782a85f2fdcdc87.gif)
 
 <br>
 
